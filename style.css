@@ -16,34 +16,69 @@ body {
 /* Header Styling */
 header {
     background-color: #141414;
-    padding: 1rem;
+    padding: 1rem 2rem;
+}
+
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header nav ul {
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
     list-style: none;
     display: flex;
     gap: 1.5rem;
+    margin-left: 20px;
 }
 
-header nav ul li a {
+.nav-links li a {
     text-decoration: none;
     color: #f5f5f5;
+    transition: color 0.3s ease;
 }
 
-.auth-buttons button {
+.nav-links li a:hover {
+    color: #ff9800;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.login-button {
+    background-color: #fff;
+    color: #141414;
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.signup-button {
     background-color: #ff9800;
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    margin-left: 10px;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.auth-buttons button:hover {
+.login-button:hover {
+    background-color: #ff9800;
+    color: #fff;
+}
+
+.signup-button:hover {
     background-color: #e68900;
 }
 
@@ -97,7 +132,6 @@ header nav ul li a {
 .search-button:hover {
     background-color: #e68900;
 }
-
 
 /* Discover Must-Watch Movies Section */
 .discover-movies {
@@ -177,61 +211,6 @@ header nav ul li a {
 
 .genre-button:hover {
     background-color: #ff9800;
-}
-
-/* Pick Your Watchlist Section */
-.pick-watchlist {
-    padding: 3rem;
-    text-align: center;
-    background-color: #121212;
-    color: #fff;
-}
-
-.pick-watchlist h3 {
-    margin-bottom: 2rem;
-    font-size: 2rem;
-}
-
-.watchlist-container {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.watchlist-card {
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    width: 300px;
-    padding: 1.5rem;
-    text-align: center;
-    color: #f5f5f5;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.watchlist-card h4 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.watchlist-card p {
-    font-size: 1rem;
-    margin: 0.5rem 0;
-}
-
-.watchlist-button {
-    background-color: #ff9800;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.watchlist-button:hover {
-    background-color: #e68900;
 }
 
 /* Footer Section */

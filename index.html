@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,20 +8,21 @@
 <body>
     <!-- Header -->
     <header>
-        <nav>
-            <h1>Film Bluff</h1>
-            <ul>
-                <li><a href="#">Featured</a></li>
-                <li><a href="#">Search Movies</a></li>
-                <li><a href="#">Detailed</a></li>
-                <li><a href="#">Profiles & Watchlist</a></li>
-            </ul>
+        <nav class="navbar">
+            <div class="nav-left">
+                <h1>Film Buff</h1>
+                <ul class="nav-links">
+                    <li><a href="#">Featured</a></li>
+                    <li><a href="#">Detailed</a></li>
+                    <li><a href="#">Profiles & Watchlist</a></li>
+                </ul>
+            </div>
             <div class="auth-buttons">
-                <button>Login</button>
-                <button>Sign Up</button>
+                <button class="login-button">Log in</button>
+                <button class="signup-button">Sign up</button>
             </div>
         </nav>
-    </header>
+    </header>    
 
     <!-- Hero Section -->
     <section class="hero">
@@ -68,27 +68,6 @@
             <button class="genre-button">Adventure</button>
             <button class="genre-button">Biography</button>
             <!-- Add more genres as needed -->
-        </div>
-    </section>
-
-    <!-- Pick Your Watchlist Section -->
-    <section class="pick-watchlist">
-        <h3>Pick Your Watchlist</h3>
-        <div class="watchlist-container">
-            <div class="watchlist-card basic">
-                <h4>Basic Plan</h4>
-                <p>Access to featured films</p>
-                <p>Limited streaming quality</p>
-                <p>Watch on 1 device</p>
-                <button class="watchlist-button">Choose Basic</button>
-            </div>
-            <div class="watchlist-card premium">
-                <h4>Premium Plan</h4>
-                <p>Access to all films</p>
-                <p>HD and 4K streaming quality</p>
-                <p>Watch on up to 4 devices</p>
-                <button class="watchlist-button">Choose Premium</button>
-            </div>
         </div>
     </section>
 
