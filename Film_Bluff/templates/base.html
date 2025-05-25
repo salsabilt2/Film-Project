@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Film Buff{% endblock %}</title>
+    {% load static %} <!-- This line loads the static template tag -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav>
         <ul>
             <li><a href="{% url 'register' %}">Sign up</a></li>
@@ -19,8 +19,8 @@
         </ul>
     </nav>
 
-    <!-- Content Block -->
     {% block content %}
+    <!-- Content will be injected here -->
     {% endblock %}
 </body>
 </html>

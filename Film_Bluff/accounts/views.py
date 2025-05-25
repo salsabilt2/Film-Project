@@ -9,8 +9,8 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Registration successful. You can now log in.')
-            return redirect('login')
+            messages.success(request, 'Registration successful! You can now log in.')
+            return redirect('login')  # Redirect to login after successful registration
     else:
         form = UserCreationForm()
     return render(request, 'accounts/register.html', {'form': form})
@@ -33,3 +33,6 @@ def logout_user(request):
     logout(request)
     messages.success(request, 'You have been logged out.')
     return redirect('login')
+
+def home(request):
+    return render(request, 'accounts/index.html')
