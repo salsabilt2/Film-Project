@@ -1,26 +1,38 @@
-<!DOCTYPE html>
+{# File: Film_Bluff/Film_Bluff/templates/base.html #}
+
+<!DOCTYhtml>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Film Buff{% endblock %}</title>
-    {% load static %} <!-- This line loads the static template tag -->
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="{% url 'register' %}">Sign up</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Log out</a></li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Log in</a></li>
-            {% endif %}
-        </ul>
-    </nav>
+    <header>
+        <nav class="navbar">
+            <!-- Brand / Home Link -->
+            <a href="{% url 'home' %}" class="navbar-brand">Film Buff</a>
 
+            <!-- Spacer -->
+            <div class="navbar-spacer"></div>
+
+            <!-- Authentication Buttons -->
+            <div class="auth-buttons">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="btn btn-logout">Log out</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-login">Log in</a>
+                    <a href="{% url 'register' %}" class="btn btn-signup">Sign up</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    {# Main content area #}
     {% block content %}
-    <!-- Content will be injected here -->
     {% endblock %}
+
 </body>
 </html>
