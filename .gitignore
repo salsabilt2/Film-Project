@@ -1,0 +1,19 @@
+.DS_Store
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
+# IDE settings
+.idea/
+
+# SQLite database
+*.sqlite3
+
+# Django collectstatic output
+staticfiles/
+
+# Logs
+*.log
