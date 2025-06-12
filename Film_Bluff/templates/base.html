@@ -23,7 +23,7 @@
                 {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}" class="btn btn-logout">Log out</a>
                 {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-login">Log in</a>
+                    <a href="{% url 'login' %}?next={% url 'home' %}" class="btn btn-login">Log in</a>
                     <a href="{% url 'register' %}" class="btn btn-signup">Sign up</a>
                 {% endif %}
             </div>

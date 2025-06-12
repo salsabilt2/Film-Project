@@ -112,3 +112,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# After a successful login, redirect here:
+LOGIN_REDIRECT_URL = 'home'    # ← this is the name= of your home URL pattern
+
+# After a logout, also send people home:
+LOGOUT_REDIRECT_URL = 'home'

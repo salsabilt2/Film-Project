@@ -1,5 +1,4 @@
-{# File: accounts/templates/accounts/login.html #}
-
+{# accounts/templates/accounts/login.html #}
 {% extends 'base.html' %}
 {% load static %}
 
@@ -9,6 +8,7 @@
       <h2>Log In</h2>
       <form method="post">
         {% csrf_token %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
         <div class="form-group">
           <label for="id_username">Username</label>
           {{ form.username }}
@@ -19,9 +19,16 @@
         </div>
         <button type="submit" class="btn-login-page">Log In</button>
       </form>
+
       <p class="signup-prompt">
         Don’t have an account? <a href="{% url 'register' %}">Sign up</a>
       </p>
+
+      {# New admin prompt #}
+      <p class="signup-prompt">
+        Are you admin? <a href="{% url 'admin_login' %}" >Log In</a>
+      </p>
+
     </div>
   </div>
 {% endblock %}
