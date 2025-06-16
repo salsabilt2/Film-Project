@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Admin Log In</h2>
+      <form method="post">
+        {% csrf_token %}
+        {# Force redirect to admin dashboard #}
+        <input
+          type="hidden"
+          name="{{ redirect_field_name }}"
+          value="{% url 'admin_dashboard' %}"
+        >
+
+        <div class="form-group">
+          <label for="id_username">Username</label>
+          {{ form.username }}
+        </div>
+        <div class="form-group">
+          <label for="id_password">Password</label>
+          {{ form.password }}
+        </div>
+        <button type="submit" class="btn-login-page">Log In</button>
+      </form>
+      <p class="signup-prompt">
+        <a href="{% url 'login' %}">← Back to User Login</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

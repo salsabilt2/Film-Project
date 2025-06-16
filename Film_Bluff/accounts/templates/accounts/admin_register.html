@@ -1,0 +1,35 @@
+{# accounts/templates/accounts/admin_register.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Admin Sign Up</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-group">
+          <label for="id_username">Username</label>
+          {{ form.username }}
+        </div>
+        <div class="form-group">
+          <label for="id_email">Email</label>
+          {{ form.email }}
+        </div>
+        <div class="form-group">
+          <label for="id_password1">Password</label>
+          {{ form.password1 }}
+        </div>
+        <div class="form-group">
+          <label for="id_password2">Confirm Password</label>
+          {{ form.password2 }}
+        </div>
+        <button type="submit" class="btn-login-page">Sign Up</button>
+      </form>
+      <p class="signup-prompt">
+        <a href="{% url 'register' %}">← Back to User Sign Up</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,13 +1,22 @@
-{# File: accounts/templates/accounts/register.html #}
-
+{# accounts/templates/accounts/register.html #}
 {% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
+
+{% if messages %}
+  <div id="message-popup" class="message-popup">
+    {% for msg in messages %}
+      <div class="msg {{ msg.tags }}">{{ msg }}</div>
+    {% endfor %}
+    <span id="close-popup" class="close-popup">&times;</span>
+  </div>
+{% endif %}
+
   <div class="login-container">
     <div class="login-card">
       <h2>Sign Up</h2>
-      <form method="post">
+      <form method="post" action="{% url 'register' %}">
         {% csrf_token %}
         {{ form.non_field_errors }}
         <div class="form-group">
@@ -28,9 +37,27 @@
         </div>
         <button type="submit" class="btn-login-page">Sign Up</button>
       </form>
+
       <p class="signup-prompt">
         Already have an account? <a href="{% url 'login' %}">Log in</a>
       </p>
+
+      {# — New admin signup prompt — #}
+      <p class="signup-prompt">
+        Sign up as an admin?
+        <a href="{% url 'admin_register' %}" >Sign Up</a>
+      </p>
     </div>
   </div>
+
+<script>
+  const popup = document.getElementById('message-popup');
+  const closeBtn = document.getElementById('close-popup');
+  if (popup) {
+    // auto-hide after 5 seconds
+    setTimeout(() => popup.style.display = 'none', 20000);
+    closeBtn.onclick = () => popup.style.display = 'none';
+  }
+</script>
+
 {% endblock %}

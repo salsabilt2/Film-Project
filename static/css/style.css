@@ -485,3 +485,42 @@ header {
 .signup-prompt a:hover {
     text-decoration: underline;
 }
+/* ─────────────────────────────────────────────────────────────
+   Popup messages (success & error)
+──────────────────────────────────────────────────────────── */
+
+.message-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  z-index: 9999;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.message-popup .msg {
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.message-popup .msg.success {
+  background-color: #28a745; /* green */
+}
+
+.message-popup .msg.error {
+  background-color: #dc3545; /* red */
+}
+
+.close-popup {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
