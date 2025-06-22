@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}My Account{% endblock %}
+
+{% block content %}
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Account Overview</h2>
+      <p>Welcome back, {{ request.user.username }}!</p>
+      <p>This is where your profile and watchlist will live.</p>
+    </div>
+  </div>
+{% endblock %}

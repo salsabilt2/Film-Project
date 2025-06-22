@@ -1,38 +1,49 @@
 {# File: Film_Bluff/Film_Bluff/templates/base.html #}
-
-<!DOCTYhtml>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Film Buff{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Film Buff{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <!-- Brand / Home Link -->
-            <a href="{% url 'home' %}" class="navbar-brand">Film Buff</a>
 
-            <!-- Spacer -->
-            <div class="navbar-spacer"></div>
+  <header>
+    <nav class="navbar">
+      <!-- Brand -->
+      <a href="{% url 'home' %}" class="navbar-brand">Film Buff</a>
 
-            <!-- Authentication Buttons -->
-            <div class="auth-buttons">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'logout' %}" class="btn btn-logout">Log out</a>
-                {% else %}
-                    <a href="{% url 'login' %}?next={% url 'home' %}" class="btn btn-login">Log in</a>
-                    <a href="{% url 'register' %}" class="btn btn-signup">Sign up</a>
-                {% endif %}
-            </div>
-        </nav>
-    </header>
+      <!-- Spacer pushes right‐side items to the right -->
+      <div class="navbar-spacer"></div>
 
-    {# Main content area #}
-    {% block content %}
-    {% endblock %}
+      <!-- Right‐side: either user‐menu or auth buttons -->
+      <div class="nav-right">
+        {% if user.is_authenticated %}
+          <div class="user-menu">
+            <span class="user-icon">&#128100;</span>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'account_overview' %}">Account</a></li>
+              {% if user.is_staff or user.is_superuser %}
+                <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+              {% endif %}
+              <li><a href="{% url 'logout' %}">Log Out</a></li>
+            </ul>
+          </div>
+        {% else %}
+          <div class="auth-buttons">
+            <a href="{% url 'login' %}?next={% url 'home' %}" class="btn btn-login">Log in</a>
+            <a href="{% url 'register' %}" class="btn btn-signup">Sign up</a>
+          </div>
+        {% endif %}
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
 
 </body>
 </html>

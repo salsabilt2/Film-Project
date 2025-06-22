@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm # typ
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import login, logout # type: ignore
 from django.contrib import messages # type: ignore
+from django.utils.safestring import mark_safe
 from .forms import SignUpForm
 
 
@@ -25,21 +26,28 @@ def register(request):
         form = SignUpForm()
     return render(request, 'accounts/register.html', {'form': form})
 
+
 def admin_register(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            # Grant admin privileges:
+            user = form.save(commit=False)
             user.is_staff = True
             user.is_superuser = True
             user.save()
-            # Optionally log them in immediately:
-            login(request, user)
-            # After admin signup, send them to admin login (or dashboard)
-            return redirect('admin_dashboard')
+            # Show a success popup and reset the form—no redirect
+            messages.success(request, "🎉 Admin sign-up successful! Please log in below.")
+            form = SignUpForm()
+        else:
+            # Collect form errors into a popup
+            error_html = form.errors.as_ul()
+            messages.error(
+                request,
+                mark_safe(f"🚨 Admin sign-up failed:<br>{error_html}")
+            )
     else:
         form = SignUpForm()
+
     return render(request, 'accounts/admin_register.html', {'form': form})
 
 # User Login
@@ -72,3 +80,8 @@ def logout_user(request):
 
 def home(request):
     return render(request, 'accounts/index.html')
+
+@login_required
+def account_overview(request):
+    # Simple stub for now
+    return render(request, 'accounts/account_overview.html')

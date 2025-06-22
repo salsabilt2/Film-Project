@@ -31,6 +31,8 @@ urlpatterns = [
             name='admin_dashboard'
         ),
 
+    path('account/', views.account_overview, name='account_overview'),# User Account Overview
+
     path('logout/', views.logout_user, name='logout'),  # Logout functionality
 
     path('', views.home, name='home'),  # Home page
