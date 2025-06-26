@@ -617,3 +617,152 @@ header {
 .dropdown-menu li a:hover {
   background-color: #1e1e1e;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Admin Dashboard
+──────────────────────────────────────────────────────────── */
+
+.admin-dashboard-container {
+  padding: 2rem;
+  background-color: #1b1b1b;
+  min-height: calc(100vh - 60px);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h2 {
+  color: #f5f5f5;
+  font-size: 2rem;
+}
+
+.btn-add-film {
+  padding: 0.6rem 1.2rem;
+  background-color: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add-film:hover {
+  background-color: #e68900;
+}
+
+.admin-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.admin-movie-card {
+  background-color: #141414;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  padding-bottom: 1rem;
+}
+
+.admin-movie-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.admin-movie-card h4 {
+  margin: 0.75rem 0 0.25rem;
+  color: #f5f5f5;
+  font-size: 1.1rem;
+}
+
+.admin-movie-card p {
+  margin: 0;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.no-movies {
+  color: #aaa;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Modal Styles for Admin Dashboard
+──────────────────────────────────────────────────────────── */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 10000;
+}
+
+.modal-content {
+  background: #141414;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  color: #f5f5f5;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.close-modal {
+  position: absolute;
+  top: 0.5rem; right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-content .form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.modal-content .form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #f5f5f5;
+}
+
+.modal-content .field-error {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.modal-content .btn-add-film {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #ff9800;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.modal-content .btn-add-film:hover {
+  background-color: #e68900;
+}

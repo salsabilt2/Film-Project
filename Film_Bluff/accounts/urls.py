@@ -25,11 +25,9 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(
              template_name='accounts/login.html',
              redirect_authenticated_user=True),name='login'),  # Login page
-    path(
-            'admin-dashboard/',
-            views.admin_dashboard,
-            name='admin_dashboard'
-        ),
+    # accounts/urls.py
+    path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
+    path('movies/add/', views.movie_add, name='movie_add'),  # stub for your add-film form
 
     path('account/', views.account_overview, name='account_overview'),# User Account Overview
 

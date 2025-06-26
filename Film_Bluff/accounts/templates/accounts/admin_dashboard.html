@@ -1,7 +1,57 @@
+{# accounts/templates/accounts/admin_dashboard.html #}
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}Admin Dashboard{% endblock %}
+
 {% block content %}
-  <div class="p-4">
-    <h1>Admin Dashboard</h1>
-    <p>Welcome, {{ request.user.username }}! This is your admin area.</p>
+  <div class="admin-dashboard-container">
+    <div class="dashboard-header">
+      <h2>Available Movies</h2>
+      <button id="open-modal" class="btn-add-film">+ Add a Film</button>
+    </div>
+
+    <div class="admin-movies-grid">
+      {% for film in movies %}
+        <div class="admin-movie-card">
+          <img src="{{ film.poster_url }}" alt="{{ film.title }} poster">
+          <h4>{{ film.title }}</h4>
+          <p>{{ film.genre }}</p>
+        </div>
+      {% empty %}
+        <p class="no-movies">No films in the database yet.</p>
+      {% endfor %}
+    </div>
   </div>
+
+  {# — Modal Overlay — #}
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal-content">
+      <span id="close-modal" class="close-modal">&times;</span>
+      <h3>Add a New Film</h3>
+
+      <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+          <div class="form-group">
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% if field.errors %}
+              <div class="field-error">{{ field.errors }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn-add-film">Save Film</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const openBtn   = document.getElementById('open-modal');
+    const closeBtn  = document.getElementById('close-modal');
+    const overlay   = document.getElementById('modal-overlay');
+    openBtn.onclick  = () => overlay.style.display = 'block';
+    closeBtn.onclick = () => overlay.style.display = 'none';
+    window.onclick    = e => { if (e.target === overlay) overlay.style.display = 'none'; }
+  </script>
 {% endblock %}
